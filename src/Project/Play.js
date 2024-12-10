@@ -15,6 +15,7 @@ const Play = () => {
   const [winner,setWinner]=useState("");
   const url="https://pokeapi.co/api/v2/pokemon/";
   const fetchPlayer=async(p)=>{
+    try{
     const res=await fetch(url+p);
     const data=await res.json();
     let item={
@@ -28,8 +29,13 @@ const Play = () => {
     setTimeout(()=>{
      setCounts(counts+1);
     },100);
+    }
+    catch(err){
+      alert(err);
+    }
   }
   const fetchComputer=async(c)=>{
+    try{
     const ress=await fetch(url+c);
     const datas=await ress.json();
         let items={
@@ -40,6 +46,10 @@ const Play = () => {
       speed:datas.stats[5].base_stat
     }
     setComputer([...computer,items]);
+    }
+    catch(err){
+      alert(err);
+    }
   }
   useEffect(()=>{
     if(counts>0){
@@ -137,12 +147,9 @@ const Play = () => {
   <h2 id="points">Select Points:</h2>
   <select id="select-points" onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
-    <option value="5">5</option>
+    <option value="3">3</option>
+      <option value="5">5</option>
       <option value="10">10</option>
-      <option value="15">15</option>
-      <option value="20">20</option>
-        <option value="25">25</option>
-          <option value="30">30</option>
     </select>
       <h2 id="modes">Select Modes:</h2>
   <select id="select-modes" onChange={(e)=>tosses(e)}>
