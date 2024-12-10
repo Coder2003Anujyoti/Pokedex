@@ -14,38 +14,30 @@ const Play = () => {
   const [counts,setCounts]=useState(0);
   const [winner,setWinner]=useState("");
   const url="https://pokeapi.co/api/v2/pokemon/";
-  const fetchPlayer=async(p)=>{
+  const fetchData=async(p,c)=>{
     try{
-    const res=await fetch(url+p);
+    const [res,ress]=await Promise.all([fetch(url+p),fetch(url+c)]) ;
     const data=await res.json();
+    const datas=await ress.json();
     let item={
       name:data.name[0].toUpperCase()+data.name.slice(1),
       image:data.sprites.other.dream_world.front_default,
       attack:data.stats[1].base_stat,
       defense:data.stats[2].base_stat,
       speed:data.stats[5].base_stat
-    }
-    setPlayer([...player,item]);
-    setTimeout(()=>{
-     setCounts(counts+1);
-    },100);
-    }
-    catch(err){
-      alert(err);
-    }
-  }
-  const fetchComputer=async(c)=>{
-    try{
-    const ress=await fetch(url+c);
-    const datas=await ress.json();
-        let items={
+    };
+    let items={
       name:datas.name[0].toUpperCase()+datas.name.slice(1),
       image:datas.sprites.other.dream_world.front_default,
       attack:datas.stats[1].base_stat,
       defense:datas.stats[2].base_stat,
       speed:datas.stats[5].base_stat
-    }
+    };
     setComputer([...computer,items]);
+    setPlayer([...player,item]);
+    setTimeout(()=>{
+     setCounts(counts+1);
+    },100);
     }
     catch(err){
       alert(err);
@@ -126,8 +118,7 @@ const Play = () => {
     }
     prevp=p;
      prevc=c;
-    fetchPlayer(p);
-    fetchComputer(c);
+    fetchData(p,c);
     }},1000);
   },[count])
   const my={
