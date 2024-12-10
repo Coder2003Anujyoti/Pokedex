@@ -132,6 +132,7 @@ const Play = () => {
   <h2 id="points">Select Points:</h2>
   <select id="select-points" onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
+    <option value="5">5</option>
       <option value="10">10</option>
       <option value="15">15</option>
       <option value="20">20</option>
