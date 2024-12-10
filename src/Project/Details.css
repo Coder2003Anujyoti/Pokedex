@@ -1,0 +1,107 @@
+#number{
+  position:relative;
+  top:20vh;
+  left:18vw;
+  width:70vw;
+  font-size:7vw;
+  font-weight:bolder;
+}
+#body{
+  overflow-x:hidden;
+}
+#loaders{
+  width:15vw;
+  aspect-ratio: 1;
+  z-index:1;
+  position:absolute;
+  top:45vh;
+  left:45vw;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#ffa516 94%,#0000) top/2vw 2vw no-repeat,
+    conic-gradient(#0000 30%,#ffa516);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 2vw),#000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
+#image-box{
+  width:60vw;
+  height:45vh;
+  position:relative;
+  left:20vw;
+  top:25vh;
+  display:flex;
+  justify-content:center;
+}
+#image-box img{
+  width:60vw;
+  height:60vw;
+  transition: transform 0.3s ease-in-out;
+&:hover{
+  transform:scale(1.1);
+}
+}
+#pokemon-name{
+  font-size:7vw;
+  font-weight:bolder;
+}
+#pokemon-name-box{
+  width:50vw;
+  height:10vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  top:10vh;
+  left:25vw;
+}
+#team{
+  display:flex;
+  flex-direction:column;
+  gap:2vw;
+  height:10vw;
+  position:absolute;
+  top:-10vh;
+}
+#card{
+  width:10vw;
+  height:55vh;
+}
+#attack{
+  position:relative;
+  top:9vh;
+  left:23vw;
+  font-size:7.5vw;
+}
+#defense{
+  position:relative;
+  top:0vh;
+  left:45vw;
+  font-size:7.5vw;
+}
+#speed{
+  position:relative;
+  top:-9vh;
+  left:67vw;
+  font-size:7.5vw;
+}
+#stats1{
+  font-size:4.5vw;
+  position:relative;
+  top:9vh;
+  left:20vw;
+}
+#stats2{
+  position:relative;
+  top:0vh;
+  font-size:4.5vw;
+  left:42vw;
+}
+#stats3{
+   position:relative;
+  top:-9vh;
+  font-size:4.5vw;
+  left:65vw;
+}

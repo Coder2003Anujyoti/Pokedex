@@ -1,0 +1,26 @@
+*{
+  font-family: Arial,Sans-Serif;
+  margin:0;
+  padding:0;
+  color:black;
+}
+body{
+
+
+}
+#intro{
+  width:100vw;
+  height:25vh;
+  position:absolute;
+  top:14vh;
+  left:0vw;
+}
+
+p{
+  width:95vw;
+  position:absolute;
+  left:3vw;
+  top:41vh;
+  font-size:4.5vw;
+  font-weight:bolder;
+}

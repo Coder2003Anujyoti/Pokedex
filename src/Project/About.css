@@ -1,0 +1,88 @@
+body{
+  
+  overflow-y:scroll;
+}
+#names-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+#warning{
+  z-index:1;
+  font-size:4.5vw;
+  color:black;
+  position:absolute;
+  top:45vh;
+  left:30vw;
+}
+#value{
+  position:absolute;
+  width:50vw;
+  height:5vh;
+  top:15vh;
+  left:26vw;
+  z-index:1;
+  font-size:4.5vw;
+  color:white;
+  background-color:red;
+  outline:none;
+  font-weight:bolder;
+  border:2px solid red;
+  border-radius:2vw;
+}
+input::placeholder{
+  color:white;
+}
+#name-container{
+  position: absolute;
+  height:50vh;
+  gap:7vw;
+  top:30vh;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+#name-container img{
+  width:30vw;
+  height:30vh;
+  position:relative;
+  top:-20vw;
+  transition: transform 0.3s ease-in-out;
+&:hover{
+  transform:scale(1.1);
+}
+}
+#name-container h1{
+  position:relative;
+  top:-10vh;
+  left:1vw;
+  font-size:7vw;
+}
+#names{
+  width:40vw;
+  height:30vh;
+  position:relative;
+  left:6vw;
+}
+#image-container,#text-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+#loader{
+  width:15vw;
+  aspect-ratio: 1;
+  z-index:1;
+  position:absolute;
+  top:45vh;
+  left:45vw;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#ffa516 94%,#0000) top/2vw 2vw no-repeat,
+    conic-gradient(#0000 30%,#ffa516);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 2vw),#000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
