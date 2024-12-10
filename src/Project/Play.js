@@ -24,10 +24,9 @@ const Play = () => {
       defense:data.stats[2].base_stat,
       speed:data.stats[5].base_stat
     }
-    setPlayer([item]);
+    setPlayer([...player,item]);
     setTimeout(()=>{
      setCounts(counts+1);
-    setLoad(false);
     },100);
   }
   const fetchComputer=async(c)=>{
@@ -40,43 +39,38 @@ const Play = () => {
       defense:datas.stats[2].base_stat,
       speed:datas.stats[5].base_stat
     }
-    setComputer([items]);
+    setComputer([...computer,items]);
   }
   useEffect(()=>{
     if(counts>0){
-      const ppoint=player.map((i,ind)=>{
-        if(ind===player.length-1 && parameter==="Attack"){
-          return i.attack;
-        }
-        else if(ind===player.length-1 && parameter==="Defense"){
-          return i.defense;
-        }
-        else if(ind===player.length-1 && parameter==="Speed"){
-          return i.speed;
-        }
-      });
-      const cpoint=computer.map((i,ind)=>{
-        if(ind===computer.length-1 && parameter==="Attack"){
-          return i.attack;
-        }
-        else if(ind===computer.length-1 && parameter==="Defense"){
-          return i.defense;
-        }
-        else if(ind===computer.length-1 && parameter==="Speed"){
-          return i.speed;
-        }
-      });
-      if(ppoint[0]===cpoint[0]){
+      let ppoint,cpoint;
+      if(parameter==="Attack"){
+        ppoint=player[player.length-1].attack;
+        cpoint=computer[computer.length-1].attack;
+      }
+      if(parameter==="Defense"){
+        ppoint=player[player.length-1].defense;
+        cpoint=computer[computer.length-1].defense;
+      }
+      if(parameter==="Speed"){
+   ppoint=player[player.length-1].speed;
+        cpoint=computer[computer.length-1].speed;
+      }
+      
+      if(ppoint===cpoint){
         setPcount(pcount);
         setCcount(ccount);
+        setLoad(false);
       }
-    if(ppoint[0]>cpoint[0]){
+    if(ppoint>cpoint){
         setPcount(pcount+1);
         setCcount(ccount);
+        setLoad(false);
       }
-    if(ppoint[0]<cpoint[0]){
+    if(ppoint<cpoint){
         setPcount(pcount);
         setCcount(ccount+1);
+        setLoad(false);
       }
       
     }
@@ -91,6 +85,8 @@ const Play = () => {
   }
   const increase=()=>{
     setCount(count+1);
+    setPlayer([]);
+    setComputer([]);
     setLoad(true);
   }
   useEffect(()=>{
