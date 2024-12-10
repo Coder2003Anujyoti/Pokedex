@@ -43,31 +43,40 @@ const Play = () => {
   }
   useEffect(()=>{
     if(counts>0){
-      let ppoint,cpoint;
-      if(parameter==="Attack"){
-        ppoint=player[player.length-1].attack;
-        cpoint=computer[computer.length-1].attack;
-      }
-      if(parameter==="Defense"){
-        ppoint=player[player.length-1].defense;
-        cpoint=computer[computer.length-1].defense;
-      }
-      if(parameter==="Speed"){
-   ppoint=player[player.length-1].speed;
-        cpoint=computer[computer.length-1].speed;
-      }
+      const ppoint=player.map((i,ind)=>{
+        if(ind===player.length-1 && parameter==="Attack"){
+          return i.attack;
+        }
+        else if(ind===player.length-1 && parameter==="Defense"){
+          return i.defense;
+        }
+        else if(ind===player.length-1 && parameter==="Speed"){
+          return i.speed;
+        }
+      });
+      const cpoint=computer.map((i,ind)=>{
+        if(ind===computer.length-1 && parameter==="Attack"){
+          return i.attack;
+        }
+        else if(ind===computer.length-1 && parameter==="Defense"){
+          return i.defense;
+        }
+        else if(ind===computer.length-1 && parameter==="Speed"){
+          return i.speed;
+        }
+      });
       
-      if(ppoint===cpoint){
+      if(ppoint[0]===cpoint[0]){
         setPcount(pcount);
         setCcount(ccount);
         setLoad(false);
       }
-    if(ppoint>cpoint){
+    if(ppoint[0]>cpoint[0]){
         setPcount(pcount+1);
         setCcount(ccount);
         setLoad(false);
       }
-    if(ppoint<cpoint){
+    if(ppoint[0]<cpoint[0]){
         setPcount(pcount);
         setCcount(ccount+1);
         setLoad(false);
