@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchTodos = createAsyncThunk("fetchTodos", async () => {
-  
-   try{
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=200`);
    const data=await res.json();
    const finaldata=data.results.map(async(curr)=>{
@@ -12,10 +10,6 @@ export const fetchTodos = createAsyncThunk("fetchTodos", async () => {
    })
 const detaileddata=await Promise.all(finaldata);
    return detaileddata;
-   }
-   catch(err){
-     throw new Error("Error"+err);
-   }
 });
 
 const todoSlice = createSlice({
@@ -37,7 +31,6 @@ const todoSlice = createSlice({
             state.data = action.payload;
         })
         builder.addCase(fetchTodos.rejected, (state, action) => {
-          alert(action.payload)
             state.isError = true;
             state.error=action.payload;
         })

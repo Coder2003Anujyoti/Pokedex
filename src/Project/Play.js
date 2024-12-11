@@ -13,6 +13,8 @@ const Play = () => {
   const [ccount,setCcount]=useState(0);
   const [counts,setCounts]=useState(0);
   const [winner,setWinner]=useState("");
+  const [pnumber,setPnumber]=useState(-1);
+  const [cnumber,setCnumber]=useState(-1);
   const url="https://pokeapi.co/api/v2/pokemon/";
   const fetchData=async(p,c)=>{
     try{
@@ -35,6 +37,8 @@ const Play = () => {
     };
     setComputer([...computer,items]);
     setPlayer([...player,item]);
+    setPnumber(p);
+    setCnumber(c);
     setTimeout(()=>{
      setCounts(counts+1);
     },100);
@@ -103,21 +107,12 @@ const Play = () => {
   useEffect(()=>{
     setTimeout(()=>{
     if(count>0){
-    let p=Math.floor(Math.random()*200)+1;
-    let c=Math.floor(Math.random()*200)+1;
-    let prevp=-1;
-    let prevc=-1;
-    if(p===c){
-      p=c+1;
+    let p=Math.floor(Math.random()*10)+1;
+    let c=Math.floor(Math.random()*10)+1;
+    if(p===c)
+    {
+      p=(c+1)%50;
     }
-    if(prevp===p){
-      p=p+2;
-    }
-    if(prevc===c){
-      c=c+2;
-    }
-    prevp=p;
-     prevc=c;
     fetchData(p,c);
     }},1000);
   },[count])
@@ -138,9 +133,9 @@ const Play = () => {
   <h2 id="points">Select Points:</h2>
   <select id="select-points" onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
-    <option value="3">3</option>
+    <option value="1">1</option>
+      <option value="3">3</option>
       <option value="5">5</option>
-      <option value="10">10</option>
     </select>
       <h2 id="modes">Select Modes:</h2>
   <select id="select-modes" onChange={(e)=>tosses(e)}>
@@ -153,7 +148,7 @@ const Play = () => {
 {load && <><div id="loads"></div></>}
     {(round!==0 && parameter!=="") &&  <>
       {(round!==0 && parameter!=="" && pcount!=round && ccount!=round ) && <><button id="play-button" style={my} disabled={load} onClick={increase}>Play Card</button></>}
-       <p id="choose-text">You choose {parameter} with {round} points.</p>
+       <p id="choose-text">You choose {parameter} with {round} point(s).</p>
        <h1 id="p-icon">Player-:{pcount}</h1>
        <h1 id="c-icon">Computer-:{ccount}</h1>
     {load==false && <> <div id="player-card">

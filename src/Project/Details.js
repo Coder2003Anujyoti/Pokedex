@@ -5,7 +5,6 @@ const Details = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-
   const API = "https://pokeapi.co/api/v2/pokemon?limit=200";
   // subscribe to thapa technical youtube channel: https://www.youtube.com/thapatechnical
 
