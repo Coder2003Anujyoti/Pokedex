@@ -107,8 +107,8 @@ const Play = () => {
   useEffect(()=>{
     setTimeout(()=>{
     if(count>0){
-    let p=Math.floor(Math.random()*10)+1;
-    let c=Math.floor(Math.random()*10)+1;
+    let p=Math.floor(Math.random()*20)+1;
+    let c=Math.floor(Math.random()*20)+1;
     if(p===c)
     {
       p=(c+1)%50;
