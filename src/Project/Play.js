@@ -15,7 +15,30 @@ const Play = () => {
   const [winner,setWinner]=useState("");
   const [pnumber,setPnumber]=useState(-1);
   const [cnumber,setCnumber]=useState(-1);
+  const [pokemons,setPokemons]=useState([]);
+  const [playerchoice,setPlayerchoice]=useState(-1);
   const url="https://pokeapi.co/api/v2/pokemon/";
+  const fetchAll=async()=>{
+    try {
+     let offset=Math.floor(Math.random()*5);
+      const resmain = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&&limit=10`);
+      const resdata = await resmain.json();
+      //   console.log(data);
+
+      const detailedPokemonData = resdata.results.map(async (curPokemon) => {
+        const res = await fetch(curPokemon.url);
+        const data = await res.json();
+        return data;
+      });
+      //   console.log(detailedPokemonData);
+
+      const detailedResponses = await Promise.all(detailedPokemonData);
+      setPokemons(detailedResponses);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const fetchData=async(p,c)=>{
     try{
     const [res,ress]=await Promise.all([fetch(url+p),fetch(url+c)]) ;
@@ -47,6 +70,9 @@ const Play = () => {
       alert(err);
     }
   }
+  useEffect(()=>{
+    fetchAll();
+  },[]);
   useEffect(()=>{
     if(counts>0){
       const ppoint=player.map((i,ind)=>{
@@ -98,22 +124,25 @@ const Play = () => {
     setParameter(e.target.value);
     setOvers(true);
   }
-  const increase=()=>{
+  const increase=(id)=>{
+    setPlayerchoice(id);
     setCount(count+1);
+    setLoad(true);
     setPlayer([]);
     setComputer([]);
-    setLoad(true);
   }
   useEffect(()=>{
     setTimeout(()=>{
     if(count>0){
-    let p=Math.floor(Math.random()*10)+1;
     let c=Math.floor(Math.random()*10)+1;
-    if(p===c)
+    if(playerchoice===c)
     {
-      p=(c+1)%50;
+      c=(c+1)%10;
+      if(c==0){
+        c=c+1;
+      }
     }
-    fetchData(p,c);
+    fetchData(playerchoice,c);
     }},1000);
   },[count])
   const my={
@@ -133,9 +162,9 @@ const Play = () => {
   <h2 id="points">Select Points:</h2>
   <select id="select-points" onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
-    <option value="1">1</option>
-      <option value="2">2</option>
       <option value="3">3</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
     </select>
       <h2 id="modes">Select Modes:</h2>
   <select id="select-modes" onChange={(e)=>tosses(e)}>
@@ -147,7 +176,14 @@ const Play = () => {
     </>}
 {load && <><div id="loads"></div></>}
     {(round!==0 && parameter!=="") &&  <>
-      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round ) && <><button id="play-button" style={my} disabled={load} onClick={increase}>Play Card</button></>}
+      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round ) &&  <div id="player-option">{pokemons.map((i)=>{
+        if(playerchoice!==i.id)
+        return(
+        <>
+        <img src={i.sprites.other.dream_world.front_default} id="iamg" onClick={()=>increase(i.id)} />
+        </>
+        )
+      })}</div>}
        <p id="choose-text">You choose {parameter} with {round} point(s).</p>
        <h1 id="p-icon">Player-:{pcount}</h1>
        <h1 id="c-icon">Computer-:{ccount}</h1>

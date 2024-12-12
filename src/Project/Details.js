@@ -41,18 +41,13 @@ const Details = () => {
   <div id="card">
   <div id="image-box"><img src={pokemon.sprites.other.dream_world.front_default} /></div>
  <div id="pokemon-name-box" ><h2 id="pokemon-name">{pokemon.name[0].toUpperCase()+pokemon.name.slice(1)}</h2></div>
-          <div>
+          
             <h3 id="attack">{pokemon.stats[1].base_stat}</h3>
             <p id="stats1">Attack</p>
-          </div>
-          <div>
             <h3 id="defense">{pokemon.stats[2].base_stat}</h3>
             <p id="stats2">Defense</p>
-          </div>
-          <div>
             <h3 id="speed">{pokemon.stats[5].base_stat}</h3>
             <p id="stats3">Speed</p>
-    </div>
     </div>
     </>)})}</div>
   </>)

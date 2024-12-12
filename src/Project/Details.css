@@ -6,9 +6,7 @@
   font-size:7vw;
   font-weight:bolder;
 }
-#body{
-  overflow-x:hidden;
-}
+
 #loaders{
   width:15vw;
   aspect-ratio: 1;

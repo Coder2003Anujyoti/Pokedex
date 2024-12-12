@@ -5,6 +5,27 @@
   top:35.8vh;
   left:13.5vw;
 }
+#player-option{
+ width:85vw;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  flex-direction:row;
+  gap:2.5vw;
+  position:absolute;
+  top:65vh;
+}
+#player-option img{
+  width:15vw;
+  height:10vh;
+  position:relative;
+  top:5vh;
+  left:8vw;
+}
+body{
+  overflow:hidden;
+}
 #modes{
   font-size:7.5vw;
   font-weight:bolder;
