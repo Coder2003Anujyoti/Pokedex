@@ -17,10 +17,13 @@ const Play = () => {
   const [cnumber,setCnumber]=useState(-1);
   const [pokemons,setPokemons]=useState([]);
   const [playerchoice,setPlayerchoice]=useState(-1);
+  const [rand,setRand]=useState(0);
+  const [loads,setLoads]=useState(false);
+  const [click,setClick]=useState(false);
   const url="https://pokeapi.co/api/v2/pokemon/";
   const fetchAll=async()=>{
     try {
-     let offset=Math.floor(Math.random()*5);
+     let offset=Math.floor(Math.random()*440);
       const resmain = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&&limit=10`);
       const resdata = await resmain.json();
       //   console.log(data);
@@ -34,7 +37,8 @@ const Play = () => {
 
       const detailedResponses = await Promise.all(detailedPokemonData);
       setPokemons(detailedResponses);
-
+      setLoads(false);
+      setRand(offset);
     } catch (error) {
       console.log(error);
     }
@@ -71,8 +75,13 @@ const Play = () => {
     }
   }
   useEffect(()=>{
+    if(click===true)
     fetchAll();
-  },[]);
+  },[click]);
+  const fun=()=>{
+    setLoads(true);
+    setClick(true);
+  }
   useEffect(()=>{
     if(counts>0){
       const ppoint=player.map((i,ind)=>{
@@ -134,13 +143,14 @@ const Play = () => {
   useEffect(()=>{
     setTimeout(()=>{
     if(count>0){
-    let c=Math.floor(Math.random()*10)+1;
-    if(playerchoice===c)
+    let c=Math.floor(Math.random()*9)+(rand+1);
+    if(playerchoice===c && c!==rand+10)
     {
-      c=(c+1)%10;
-      if(c==0){
-        c=c+1;
-      }
+      c=playerchoice+1;
+      
+    }
+    if(playerchoice===c && c===rand+10){
+      c=rand+1;
     }
     fetchData(playerchoice,c);
     }},1000);
@@ -162,9 +172,12 @@ const Play = () => {
   <h2 id="points">Select Points:</h2>
   <select id="select-points" onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
-      <option value="3">3</option>
       <option value="5">5</option>
       <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
     </select>
       <h2 id="modes">Select Modes:</h2>
   <select id="select-modes" onChange={(e)=>tosses(e)}>
@@ -175,7 +188,9 @@ const Play = () => {
     </select>
     </>}
 {load && <><div id="loads"></div></>}
-    {(round!==0 && parameter!=="") &&  <>
+{loads &&  <><div id="loads"></div></>}
+    {(round!==0 && parameter!=="") && <>
+      {(round!==0 && parameter!==""   && click===false ) && <><button id="play-button" onClick={fun}>Play</button></>}
       {(round!==0 && parameter!=="" && pcount!=round && ccount!=round ) &&  <div id="player-option">{pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(

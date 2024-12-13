@@ -103,3 +103,11 @@
   font-size:4.5vw;
   left:65vw;
 }
+#more-btn{
+  width:15vw;
+  height:8vh;
+  margin-top:20vh;
+  margin-left:41vw;
+  border-radius:10vw;
+  border:2px solid black;
+}

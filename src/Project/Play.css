@@ -46,6 +46,9 @@ body{
   color:white;
   border-radius:25vw;
   border:1vw solid black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 #select-points{
   width:24vw;
@@ -60,6 +63,9 @@ body{
   color:white;
   border-radius:25vw;
   border:1vw solid black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 #cinfo{
   color:black;
@@ -104,14 +110,14 @@ body{
   width:28vw;
   height:5vh;
   background-color:dodgerblue;
-  font-size:3.5vw;
+  font-size:6.5vw;
   font-weight:bolder;
   position:absolute;
-  top:73vh;
+  top:76vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  left:34vw;
+  left:37vw;
   outline:none;
   border:2vw solid dodgerblue;
 }
@@ -130,6 +136,23 @@ body{
   animation: l13 1s infinite linear;
 }
 @keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
+#loader{
+  width:15vw;
+  aspect-ratio: 1;
+  z-index:1;
+  position:absolute;
+  top:35vh;
+  left:43vw;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#ffa516 94%,#0000) top/2vw 2vw no-repeat,
+    conic-gradient(#0000 30%,#ffa516);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 2vw),#000 0);
+  animation: o13 1s infinite linear;
+}
+@keyframes o13{ 
   100%{transform: rotate(1turn)}
 }
 #player-image{

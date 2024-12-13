@@ -2,7 +2,12 @@ body{
   
   overflow-y:scroll;
 }
-#names-container{
+#rf{
+  background-color:blue;
+  position:absolute;
+  top:14vh;
+}
+#names-container,#naes-container{
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
@@ -42,7 +47,15 @@ input::placeholder{
   flex-direction:row;
   flex-wrap:wrap;
 }
-#name-container img{
+#nae-container{
+  position:absolute;
+  gap:7vw;
+  top:30vh;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+#name-container img,#nae-container img{
   width:30vw;
   height:30vh;
   position:relative;
@@ -52,7 +65,7 @@ input::placeholder{
   transform:scale(1.1);
 }
 }
-#name-container h1{
+#name-container h1,#nae-container h1{
   position:relative;
   top:-10vh;
   left:1vw;
@@ -64,7 +77,15 @@ input::placeholder{
   position:relative;
   left:6vw;
 }
-#image-container,#text-container{
+#naes{
+  width:40vw;
+  height:30vh;
+  position:relative;
+  left:6vw;
+}
+
+
+#image-container,#text-container,#images-container,#texts-container{
   display:flex;
   justify-content:center;
   align-items:center;

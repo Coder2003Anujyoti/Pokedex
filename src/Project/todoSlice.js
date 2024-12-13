@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchTodos = createAsyncThunk("fetchTodos", async () => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=200`);
+   const res= await fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&&limit=50`);
    const data=await res.json();
    const finaldata=data.results.map(async(curr)=>{
      const ress = await fetch(curr.url);
      const datas=ress.json();
      return datas;
    })
+   
 const detaileddata=await Promise.all(finaldata);
    return detaileddata;
 });
