@@ -26,7 +26,7 @@ function App() {
         <li id="home"><a id="link" 
          onClick={()=>setToggle(true)}>Home</a></li>
      <li><a id="link" onClick={()=>setTogglec(true)}>About</a></li>
-      <li><a id="link" onClick={()=>setToggleb(true)}>Details</a></li>
+      <li><a id="link" onClick={()=>setToggleb(true)}>Stats</a></li>
          <li><a id="link" onClick={()=>setToggled(true)}>Play</a></li>
         </ul>
         </div>

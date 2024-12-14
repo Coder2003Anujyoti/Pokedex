@@ -1,0 +1,172 @@
+#loader{
+  width:15vw;
+  aspect-ratio: 1;
+  z-index:1;
+  position:absolute;
+  top:45vh;
+  left:45vw;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#ffa516 94%,#0000) top/2vw 2vw no-repeat,
+    conic-gradient(#0000 30%,#ffa516);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 2vw),#000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+  }
+  body{
+  overflow:none;
+}
+#go-back{
+  width:0vw;
+  height:0vh;
+  background-color:transparent;
+  font-size:7.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:14vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  left:-5vw;
+  outline:none;
+ 
+}
+.pokemon-image{
+  width:55vw;
+  height:35vh;
+  position:absolute;
+  top:20vh;
+  left:23vw;
+  transition: transform 0.1s ease-in-out;
+&::hover{
+  transform:scale(1.1);
+}
+}
+.pokemon-image{
+  width:55vw;
+  height:35vh;
+  position:absolute;
+  top:20vh;
+  left:23vw;
+  transition: transform 0.3s ease-in-out;
+&:hover{
+  transform:scale(1.1);
+}
+}
+#first-data,#second-data{
+height:88vh;
+width:100vw;
+background-color:transparent;
+position:absolute;
+top:0vh;
+left:0vw;
+}
+#div {
+  position: absolute;
+   top:14vh;
+   left:0vw;
+   transform: translate(-50%, -50%);
+   height:40vh;
+    width:100vw;
+    border-radius:70vw 0 0 0;
+    background-color: green;
+    transform:scale(-1,-1);
+    opacity:0.5;
+        }
+.pokemon-name{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:58vh;
+  left:2vw;
+}
+body{
+  overflow-y:none;
+}
+.pokemon-info-abilities{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:68vh;
+  left:2vw;
+}
+.pokemon-info-type {
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:63vh;
+  left:2vw;
+}
+.pokemon-info-one{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:73vh;
+  left:2vw;
+}
+.pokemon-info-two{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:78vh;
+  left:2vw;
+}
+.pokemon-info-three{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:83vh;
+  left:2vw;
+}
+.pokemon-info-four{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:73vh;
+  left:53vw;
+}
+.pokemon-info-five{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:78vh;
+  left:53vw;
+}
+.pokemon-info-six{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:83vh;
+  left:53vw;
+}
+.pokemon-info-seven{
+  color:black;
+  opacity:1;
+  font-size:6.5vw;
+  font-weight:bolder;
+  position:absolute;
+  top:14vh;
+  left:75vw;
+}
+
+

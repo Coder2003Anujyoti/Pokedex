@@ -1,11 +1,16 @@
+import Card from './Card';
+
 import React,{useState,useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import './About.css';
+//import Card from './Card.js';
 import { fetchTodos } from './todoSlice'
 const About = () => {
   const [text,setText]=useState("");
   const [op,setOp]=useState([]);
   const [load,setLoad]=useState(true);
+  const [page,setPage]=useState(false);
+  const [id,setId]=useState(0);
 const dispatch = useDispatch();
   const state = useSelector((state) => state);
   useEffect(()=>{
@@ -16,6 +21,15 @@ const dispatch = useDispatch();
       api();
     }
   },[state])
+  
+    
+    //const img=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+    
+  const open=(id)=>{
+    setId(id);
+    setPage(true);
+  
+  }
   const searchdata=state.todo.data.filter((item)=> item.name.toUpperCase().includes(text.toUpperCase()) )
   const searchop=op.filter((item)=> item.name.toUpperCase().includes(text.toUpperCase()) )
   const call=(e)=>{
@@ -38,6 +52,7 @@ setLoad(false);
     <>
       <meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    {page===false && <>
              {!load && <><input type="text" id="value" placeholder="Search for Pokemons..." value={text} onChange={(e)=>call(e)} />
       </> }
       {(state.todo.isLoading || load) && <><div id="loader"></div></>}
@@ -48,7 +63,7 @@ setLoad(false);
     <>
       <div id="names">
         <div id="image-container">
-    <img src={i.sprites.other.dream_world.front_default}></img></div>
+    <img src={i.sprites.other.dream_world.front_default} onClick={()=>open(i.id)}></img></div>
     <div id="text-container">
         <h1>{i.name[0].toUpperCase()+i.name.slice(1)}</h1></div>
         </div>
@@ -60,7 +75,7 @@ setLoad(false);
     <>
       <div id="naes">
         <div id="images-container">
-    <img src={i.sprites.other.dream_world.front_default}></img></div>
+    <img src={i.sprites.other.dream_world.front_default} onClick={()=>open(i.id)}></img></div>
     <div id="texts-container">
         <h1>{i.name[0].toUpperCase()+i.name.slice(1)}</h1></div>
         </div>
@@ -73,6 +88,12 @@ setLoad(false);
       <h1 id="warning">No Pokemons Found</h1>
     </>
     }
+    </>
+    }
+  {page===true && <>
+       
+    <Card searchdata={searchdata} op={op} id={id} setPage={setPage}/>
+    </>}
     </>
   );
 };

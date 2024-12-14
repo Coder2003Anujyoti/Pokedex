@@ -191,7 +191,7 @@ const Play = () => {
 {loads &&  <><div id="loads"></div></>}
     {(round!==0 && parameter!=="") && <>
       {(round!==0 && parameter!==""   && click===false ) && <><button id="play-button" onClick={fun}>Play</button></>}
-      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round ) &&  <div id="player-option">{pokemons.map((i)=>{
+      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round && load===false) &&  <div id="player-option">{pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(
         <>
