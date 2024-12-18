@@ -45,10 +45,6 @@ body{
   position:absolute;
   left:23vw;
   top:-2.5vh;
-  transition: transform 0.3s ease-in-out;
-&:hover{
-  transform:scale(1.1);
-}
 }
 #nav-bar{
   width:100vw;

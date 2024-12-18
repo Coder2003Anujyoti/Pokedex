@@ -23,7 +23,7 @@ const Play = () => {
   const url="https://pokeapi.co/api/v2/pokemon/";
   const fetchAll=async()=>{
     try {
-     let offset=Math.floor(Math.random()*440);
+     let offset=Math.floor(Math.random()*640);
       const resmain = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&&limit=10`);
       const resdata = await resmain.json();
       //   console.log(data);

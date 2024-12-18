@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
-import './Card.css';
-const Card = ({searchdata,searchop,id,setPage}) => {
+import './Show.css';
+const Show = ({searchdata,id,setPage}) => {
   
   const typeColor = {
   bug: "#26de81",
@@ -26,11 +26,13 @@ const Card = ({searchdata,searchop,id,setPage}) => {
     <>
       <meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-        {id<=20 && <><div id="first-data"> {searchdata.map((i,ind)=>{
-          if(id===i.id)
+        {id  && <><div id="first-data"> {searchdata.map((i,ind)=>{
          return(
          <>
-        <div id="div" style={{
+        {i.map((i,ind)=>{
+        if(i.id===id)
+        return(<>
+                  <div id="div" style={{
   backgroundColor:`${typeColor[i.types[0].type.name]}`
 }}></div>
         <img src={i.sprites.other.dream_world.front_default}
@@ -65,61 +67,14 @@ const Card = ({searchdata,searchop,id,setPage}) => {
               .slice(0,1)
               .join(", ")}
           </p>
+        </>)})}
          </>
          )
        })
        }</div> </>}
-      {id>20 && <> <div id="second-data"> {searchop.map((i,ind)=>{
-      return(
-      <>
-        {i.map((i)=>{
-      if(id===i.id)
-         return(
-         <>
-        <div id="div" style={{
-  backgroundColor:`${typeColor[i.types[0].type.name]}`
-}}></div>
-        <img src={i.sprites.other.dream_world.front_default}
-          alt={i.name}
-          className="pokemon-image"
-        />
-      <p className="pokemon-name">Name-: {i.name[0].toUpperCase()+i.name.slice(1)}</p>
-        <p className="pokemon-info-type">
-        Type-: {i.types.map((curType) => curType.type.name).join(", ")}
-        </p>
-        <p className="pokemon-info-one">
-          <span> Height:</span> {i.height}
-        </p>
-        <p className="pokemon-info-two">
-          <span> Weight:</span> {i.weight}
-        </p>
-        <p className="pokemon-info-three">
-          <span> Experience:</span> {i.base_experience}
-        </p>
-        <p className="pokemon-info-four">
-          <span> Attack: </span> {i.stats[1].base_stat}
-        </p>
-      <p className="pokemon-info-five">
-          <span> Defense: </span> {i.stats[2].base_stat}
-        </p>
-       <p className="pokemon-info-six">
-          <span> Speed: </span> {i.stats[5].base_stat}
-        </p>
-           
-          <p className="pokemon-info-abilities">
-          Ability-: {i.abilities
-              .map((abilityInfo) => abilityInfo.ability.name)
-              .slice(0, 1)
-              .join(", ")}
-          </p>
-    
 
-         </>
-         )})}</>)
-       })
-       }</div></>}
-       <button id="go-back" onClick={()=>setPage(false)}>X</button>
+       <button id="go-back" onClick={()=>setPage(true)}>X</button>
     </>
   );
 }
-export default Card;
+export default Show;
