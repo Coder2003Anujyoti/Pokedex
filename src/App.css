@@ -11,7 +11,7 @@ body{
   width:95vw;
   position:absolute;
   font-weight:bolder;
-  top:68vh;
+  top:60vh;
   font-size:4.5vw;
   left:3vw;
   color:black;
@@ -48,7 +48,7 @@ body{
 }
 #nav-bar{
   width:100vw;
-  height:27vh;
+  height:20vh;
   background-color:#e69b00;
   z-index:1;
   color:black;

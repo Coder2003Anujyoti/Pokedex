@@ -1,5 +1,4 @@
 import Play from './Project/Play';
-import About from './Project/About';
 import Details from './Project/Details';
 import Home from './Project/Home';
 import React,{useState} from 'react'
@@ -25,7 +24,6 @@ function App() {
         <ul type="none">
         <li id="home"><a id="link" 
          onClick={()=>setToggle(true)}>Home</a></li>
-     <li><a id="link" onClick={()=>setTogglec(true)}>About</a></li>
       <li><a id="link" onClick={()=>setToggleb(true)}>Stats</a></li>
          <li><a id="link" onClick={()=>setToggled(true)}>Play</a></li>
         </ul>
@@ -34,7 +32,6 @@ function App() {
     </>}
     {toggle==true && <Home />}
     {toggleb== true && <Details />}
-    {togglec==true && <About  />}
     {toggled==true && <Play />}
     </>
   )
