@@ -79,7 +79,8 @@ body{
   height:0vh;
   background-color:green;
   display:flex;
-  flex-direction:column;
+  flex-direction:row;
+  flex-wrap: wrap;
   gap:23vh;
   position:absolute;
   left:-10vh;
