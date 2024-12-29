@@ -78,12 +78,7 @@ const Details = () => {
   <div id="image-box"><img src={item.sprites.other.dream_world.front_default} onClick={()=>go(item.id)} /></div>
  <div id="pokemon-name-box" ><h2 id="pokemon-name">{item.name[0].toUpperCase()+item.name.slice(1)}</h2></div>
           
-            <h3 id="attack">{item.stats[1].base_stat}</h3>
-            <p id="stats1">Attack</p>
-            <h3 id="defense">{item.stats[2].base_stat}</h3>
-            <p id="stats2">Defense</p>
-            <h3 id="speed">{item.stats[5].base_stat}</h3>
-            <p id="stats3">Speed</p>
+            
     </div>
     </>)})}
     {index===pokemon.length-1 &&           <img src="images/5.png" style={{display:`${disable?"none":"block"}`}}id="more-btn" onClick={func}/>}

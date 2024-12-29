@@ -31,8 +31,8 @@ body{
   aspect-ratio: 1;
   z-index:1;
   position:relative;
-  top:10vh;
-  left:41vw;
+  top:25vh;
+  left:61vw;
   border-radius: 50%;
   background: 
     radial-gradient(farthest-side,#ffa516 94%,#0000) top/2vw 2vw no-repeat,
@@ -44,17 +44,17 @@ body{
   100%{transform: rotate(1turn)}
 }
 #image-box{
-  width:60vw;
-  height:45vh;
+  width:30vw;
+  height:30vh;
   position:relative;
-  left:20vw;
+  left:27vw;
   top:25vh;
   display:flex;
   justify-content:center;
 }
 #image-box img{
-  width:60vw;
-  height:60vw;
+  width:30vw;
+  height:30vw;
   transition: transform 0.3s ease-in-out;
 &:hover{
   transform:scale(1.1);
@@ -71,18 +71,18 @@ body{
   justify-content:center;
   align-items:center;
   position:relative;
-  top:10vh;
-  left:25vw;
+  top:23vh;
+  left:15vw;
 }
 #team{
-  width:0vw;
+  width:100vw;
   height:0vh;
   background-color:green;
   display:flex;
   flex-direction:column;
-  gap:2vh;
+  gap:23vh;
   position:absolute;
-  left:0vh;
+  left:-10vh;
   top:-10vh;
 }
 #teams{
@@ -98,7 +98,7 @@ body{
 }
 #card{
   width:10vw;
-  height:55vh;
+  height:13vh;
 }
 #attack{
   position:relative;
@@ -140,8 +140,8 @@ body{
   width:15vw;
   height:8vh;
   position:relative;
-  top:20vh;
-  left:41vw;
+  top:25vh;
+  left:61vw;
   border-radius:10vw;
   border:2px solid black;
 }
