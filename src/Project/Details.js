@@ -74,7 +74,7 @@ const Details = () => {
     return(<>
         <div id="card" className="mx-4 border-4  rounded-lg shadow-lg shadow-slate-500/30 hover:scale-105 font-bold hover:ease-in-out duration-300">
   <img src={item.sprites.other.dream_world.front_default} onClick={()=>go(item.id)} className="h-32 w-32"/>
-<div className="flex rounded-sm justify-center"><h2 className="text-sm font-bold">{item.name[0].toUpperCase()+item.name.slice(1)}</h2>
+<div className="flex rounded-sm justify-center"><h2 className="text-sm font-bold md:text-xl ">{item.name[0].toUpperCase()+item.name.slice(1)}</h2>
          </div> 
 
     </div>
@@ -83,7 +83,7 @@ const Details = () => {
     className="h-8 w-8 md:mx-8 md:h-12 md:w-12 "
     onClick={func}/></div></>}
         {index===pokemon.length-1 && subloading &&
-      <div id="loaers" className="my-2  flex justify-center w-full font-bold text-lg flex justify-center">Items are Loading...</div>
+      <div id="loaers" className="my-2  flex justify-center w-full font-bold text-lg flex justify-center md:text-xl ">Items are Loading...</div>
     }
     </>)})}
     </div> </>}

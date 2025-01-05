@@ -23,14 +23,14 @@ function App() {
        <img src="images/Intro.jpg" className="w-full md:hidden"></img>
 
         <div id="nav-bar" className="w-full bg-yellow-500 h-16 py-4">
-        <ul type="none" className="flex justify-around font-bold text-xl">
+        <ul type="none" className="flex justify-around font-bold text-lg md:text-xl ">
         <li id="home"><a id="link" 
          onClick={()=>setToggle(true)}>Home</a></li>
       <li><a id="link" onClick={()=>setToggleb(true)}>Stats</a></li>
          <li><a id="link" onClick={()=>setToggled(true)}>Play</a></li>
         </ul>
         </div>
-    <p className="text-sm font-medium p-2 md:px-4">Pokedex is an app created by Anujyoti De that offers a comprehensive database of Pokémon. It allows users to easily search, explore, and learn about different Pokémon species, their abilities, evolutions, and other important details. The app features an intuitive design, making it simple for Pokémon enthusiasts to access information, track progress, and enhance their knowledge. Whether you're a casual player or a dedicated fan, Pokedex serves as an essential tool for exploring the Pokémon universe, offering real-time updates and detailed stats to keep users engaged. It’s a perfect companion for any Pokémon fan.</p>
+    <p className="text-sm font-medium p-2 md:px-4 md:text-xl ">Pokedex is an app created by Anujyoti De that offers a comprehensive database of Pokémon. It allows users to easily search, explore, and learn about different Pokémon species, their abilities, evolutions, and other important details. The app features an intuitive design, making it simple for Pokémon enthusiasts to access information, track progress, and enhance their knowledge. Whether you're a casual player or a dedicated fan, Pokedex serves as an essential tool for exploring the Pokémon universe, offering real-time updates and detailed stats to keep users engaged. It’s a perfect companion for any Pokémon fan.</p>
     </>}
     {toggle==true && <Home />}
     {toggleb== true && <Details />}

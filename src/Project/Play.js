@@ -171,7 +171,7 @@ const Play = () => {
     <div className="flex flex-col  my-36 gap-y-8 md:flex-row 
     md:justify-center md:gap-x-28 md:my-28">
     <div className="flex flex-row gap-x-2 justify-center">
-  <h2 className="text-black font-bold text-lg">Select Points:</h2>
+  <h2 className="text-black font-bold text-lg md:text-xl ">Select Points:</h2>
   <select className="w-30 h-30 rounded-sm bg-black text-white font-bold rounded-sm"onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
       <option value="5">5</option>
@@ -183,7 +183,7 @@ const Play = () => {
     </select>
   </div>
       <div className="flex flex-row gap-x-2 justify-center">
-      <h2 className="text-black font-bold text-lg">Select Modes:</h2>
+      <h2 className="text-black font-bold text-lg md:text-xl ">Select Modes:</h2>
   <select id="select-modes" className="w-30 h-30 rounded-sm bg-black text-white font-bold rounded-sm" onChange={(e)=>tosses(e)}>
     <option disabled={overs}>Select</option>
       <option value="Attack">Attack</option>
@@ -197,18 +197,18 @@ const Play = () => {
 
 {parameter!='' && round!=''&&
      <>
-      <div className="w-full  flex justify-center"> <p className=" text-lg font-bold ">You choose {parameter} with {round} point(s).</p></div>
+      <div className="w-full  flex justify-center"> <p className=" text-lg font-bold md:text-xl ">You choose {parameter} with {round} point(s).</p></div>
          {load && <><div className="font-bold w-full  flex justify-center">Loading...</div></>}
       {loads &&  <><div className=" font-bold w-full flex justify-center ">Loading...</div></>}
 
-        <div className="w-full h-48 flex justify-center items-center ">
-        <div className='w-full flex justify-around gap-x-32 '>{load==false && <> <div className="flex-col justify-center ">
+        <div className="w-full h-48 flex justify-center items-center md:my-8 ">
+        <div className='w-full flex justify-around gap-x-32 md:gap-x-32 md:justify-center'>{load==false && <> <div className="flex-col justify-center ">
         {player.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
-           <img src={i.image} id="player-image" className="w-24 h-24"></img>
-         <div className='flex justify-center '><p className="font-bold">{i.name}</p></div>
-         <div className='flex justify-center '>
+           <img src={i.image} id="player-image" className="w-24 h-24 md:w-32 md:h-32"></img>
+         <div className='flex justify-center md:text-xl'><p className="font-bold">{i.name}</p></div>
+         <div className='flex justify-center md:text-xl '>
     {parameter==="Attack" && <h3 className="font-bold ">Attack-:{i.attack}</h3>}
     {parameter==="Defense" && <h3 className="font-bold ">Defense-:{i.defense}</h3>}
       {parameter==="Speed" && <h3 className="font-bold ">Speed-:{i.speed}</h3>}</div>
@@ -222,11 +222,11 @@ const Play = () => {
         {computer.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
-           <img src={i.image} className="w-24 h-24"></img>
-           <div className='flex justify-center '><p className="font-bold">{i.name}</p></div>
-           <div className='flex justify-center '>{parameter==="Attack" && <h3 className="font-bold ">Attack-:{i.attack}</h3>}
-    {parameter==="Defense" && <h3 className="font-bold ">Defense-:{i.defense}</h3>}
-      {parameter==="Speed" && <h3 className="font-bold ">Speed-:{i.speed}</h3>}</div>
+           <img src={i.image} className="w-24 h-24 md:w-32 md:h-32"></img>
+           <div className='flex justify-center md:text-xl '><p className="font-bold">{i.name}</p></div>
+           <div className='flex justify-center md:text-xl'>{parameter==="Attack" && <h3 className="font-bold  md:text-xl ">Attack-:{i.attack}</h3>}
+    {parameter==="Defense" && <h3 className="font-bold md:text-xl ">Defense-:{i.defense}</h3>}
+      {parameter==="Speed" && <h3 className="font-bold md:text-xl  ">Speed-:{i.speed}</h3>}</div>
     
           </>)
         })}
@@ -238,20 +238,20 @@ const Play = () => {
         
         
         </div>
-     <div className="  justify-around gap-x-32 w-full flex">
+     <div className="  justify-around gap-x-32 w-full flex md:gap-x-44 md:justify-center md:my-8 md:text-xl">
        <h1 className="font-bold">Player-:{pcount}</h1>
     <h1 className="font-bold">Computer-:{ccount}</h1></div>
-     <div className="w-full flex flex-row flex-wrap my-2 justify-center  gap-y-2 my-4 ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
+     <div className="w-full flex flex-row flex-wrap my-2 justify-center gap-x-4 gap-y-4 my-4 md:my-12 ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(
         <>
-        <img src={i.sprites.other.dream_world.front_default} className="h-16 w-16" id="iamg" onClick={()=>increase(i.id)} />
+        <img src={i.sprites.other.dream_world.front_default} className="h-16 w-16 md:w-28 md:h-28" id="iamg" onClick={()=>increase(i.id)} />
         </>
         )
       })}
-      {ccount==round && round!=0 && <><div className='flex justify-center'><h2 className="text-lg font-bold ">Computer Win!!!</h2></div></>}
+      {ccount==round && round!=0 && <><div className='flex justify-center'><h2 className="text-lg font-bold md:text-xl  ">Computer Win!!!</h2></div></>}
       {pcount==round && round!=0 &&
-     <><div className='flex justify-center'><h2 id="pinfo" className="text-lg font-bold">Player Win!!!</h2></div></>}
+     <><div className='flex justify-center'><h2 id="pinfo" className="text-lg font-bold md:text-xl ">Player Win!!!</h2></div></>}
      {click==false && <><div className='flex items-center'><button className="w-24 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full" onClick={fun}>Play</button></div></>}
       </div>
        </>}
