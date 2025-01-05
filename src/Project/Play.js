@@ -241,7 +241,7 @@ const Play = () => {
      <div className="  justify-around gap-x-32 w-full flex">
        <h1 className="font-bold">Player-:{pcount}</h1>
     <h1 className="font-bold">Computer-:{ccount}</h1></div>
-     <div className="w-full flex flex-row flex-wrap my-2 justify-center  ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
+     <div className="w-full flex flex-row flex-wrap my-2 justify-center  gap-y-2 my-4 ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(
         <>
