@@ -1,6 +1,5 @@
 import Show from './Show';
 import React ,{useState,useEffect} from "react";
-import './Details.css';
 const Details = () => {
  const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,31 +64,30 @@ const Details = () => {
     setShowpage(false);
   }
   return(<>
-     <meta name="viewport" 
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-     {loading && <><div id="loaders"></div></>}
- {showpage===true && <> <div id="team">
+     {loading && <><div id="loaders" className="my-48 font-bold text-lg flex justify-center md:my-32">Page is Loading...</div></>}
+ {showpage===true && <> <div className="w-full flex flex-row flex-wrap justify-around my-4 gap-x-4 gap-y-4">
      {pokemon.map((item,index) => { return (
     <>
     {item.map((item)=>{
     if(item.id<650)
     return(<>
-        <div id="card">
-  <div id="image-box"><img src={item.sprites.other.dream_world.front_default} onClick={()=>go(item.id)} /></div>
- <div id="pokemon-name-box" ><h2 id="pokemon-name">{item.name[0].toUpperCase()+item.name.slice(1)}</h2></div>
-          
-            
+        <div id="card" className="mx-4 border-4  rounded-lg shadow-lg shadow-slate-500/30 hover:scale-105 font-bold hover:ease-in-out duration-300">
+  <img src={item.sprites.other.dream_world.front_default} onClick={()=>go(item.id)} className="h-32 w-32"/>
+<div className="flex rounded-sm justify-center"><h2 className="text-sm font-bold">{item.name[0].toUpperCase()+item.name.slice(1)}</h2>
+         </div> 
+
     </div>
     </>)})}
-    {index===pokemon.length-1 &&           <img src="images/5.png" style={{display:`${disable?"none":"block"}`}}id="more-btn" onClick={func}/>}
+    {index===pokemon.length-1 &&           <img src="images/5.png" style={{display:`${disable?"none":"block"}`}}
+    className="h-8 w-8 md:mx-8 md:h-12 md:w-12"
+    onClick={func}/>}
         {index===pokemon.length-1 && subloading &&
-      <div id="loaers"></div>
+      <div id="loaers" className="my-2 font-bold text-lg flex justify-center md:my-4">Items are Loading...</div>
     }
     </>)})}
     </div> </>}
   {showpage===false && <Show 
- searchdata={pokemon}  id={showid}  setPage={setShowpage} />
-}
+ searchdata={pokemon}  id={showid}  setPage={setShowpage} />}
   </>)
 };
 export default Details;

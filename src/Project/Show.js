@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from "react";
-import './Show.css';
 const Show = ({searchdata,id,setPage}) => {
   
   const typeColor = {
@@ -24,34 +23,47 @@ const Show = ({searchdata,id,setPage}) => {
   
   return (
     <>
-      <meta name="viewport" 
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-        {id  && <><div id="first-data"> {searchdata.map((i,ind)=>{
+       <button className=" mx-2 text-black font-bold text-xl md:mx-4" onClick={()=>setPage(true)}>X</button>
+        {id  && <><div className="w-full flex flex-column flex-wrap justify-around  "> {searchdata.map((i,ind)=>{
          return(
          <>
         {i.map((i,ind)=>{
         if(i.id===id)
         return(<>
-                  <div id="div" style={{
+         <div className="flex flex-col justify-center md:gap-x-8  md:justify-evenly md:flex-row">
+                  <div className="rounded-lg" style={{
   backgroundColor:`${typeColor[i.types[0].type.name]}`
-}}></div>
+}}>
         <img src={i.sprites.other.dream_world.front_default}
           alt={i.name}
-          className="pokemon-image"
+          className="w-64 h-64"
         />
-      <p className="pokemon-name">Name-: {i.name[0].toUpperCase()+i.name.slice(1)}</p>
-        <p className="pokemon-info-type">
+        </div>
+       <div className="  flex flex-col justify-center text-lg font-bold">
+    <div className="w-full flex justify-center"><p className="text-lg font-bold">Name-: {i.name[0].toUpperCase()+i.name.slice(1)}</p></div>
+           <div className="w-full flex justify-center text-lg font-bold"> <p className="pokemon-info-type">
         Type-: {i.types.map((curType) => curType.type.name).join(", ")}
-      </p>
-        <p className="pokemon-info-one">
+      </p></div>
+     <div className="w-full flex justify-center text-lg font-bold">  <p className="pokemon-info-abilities">
+          Ability-: {i.abilities
+              .map((abilityInfo) => abilityInfo.ability.name)
+              .slice(0,1)
+              .join(", ")}
+          </p></div>
+          </div>
+    <div className="flex flex-row gap-x-4">
+      <div className="p-4  flex flex-col text-lg  font-bold justify-center">
+       <div> <p className="pokemon-info-one">
           <span> Height:</span> {i.height}
-        </p>
-        <p className="pokemon-info-two">
+        </p></div>
+       <div> <p className="pokemon-info-two">
           <span> Weight:</span> {i.weight}
-        </p>
-        <p className="pokemon-info-three">
+        </p></div>
+        <div><p className="pokemon-info-three">
           <span> Experience:</span> {i.base_experience}
-        </p>
+        </p></div>
+        </div>
+     <div className="p-4  flex flex-col text-lg font-bold justify-center">
           <p className="pokemon-info-four">
           <span> Attack: </span> {i.stats[1].base_stat}
         </p>
@@ -61,19 +73,16 @@ const Show = ({searchdata,id,setPage}) => {
        <p className="pokemon-info-six">
           <span> Speed: </span> {i.stats[5].base_stat}
         </p>
-          <p className="pokemon-info-abilities">
-          Ability-: {i.abilities
-              .map((abilityInfo) => abilityInfo.ability.name)
-              .slice(0,1)
-              .join(", ")}
-          </p>
+        </div>
+        </div>
+        </div>
         </>)})}
          </>
          )
        })
        }</div> </>}
 
-       <button id="go-back" onClick={()=>setPage(true)}>X</button>
+
     </>
   );
 }

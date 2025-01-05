@@ -54,7 +54,7 @@ body{
 }
 #image-box img{
   width:30vw;
-  height:30vw;
+  height:30vh;
   transition: transform 0.3s ease-in-out;
 &:hover{
   transform:scale(1.1);
@@ -65,14 +65,14 @@ body{
   font-weight:bolder;
 }
 #pokemon-name-box{
-  width:50vw;
+  width:20vw;
   height:10vh;
   display:flex;
   justify-content:center;
   align-items:center;
   position:relative;
   top:23vh;
-  left:15vw;
+  left:32vw;
 }
 #team{
   width:100vw;
@@ -81,9 +81,9 @@ body{
   display:flex;
   flex-direction:row;
   flex-wrap: wrap;
-  gap:23vh;
+  gap:45vw;
   position:absolute;
-  left:-10vh;
+  left:-20vw;
   top:-10vh;
 }
 #teams{

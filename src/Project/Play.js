@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'; 
-import './Play.css';
+
 const Play = () => {
   const [round,setRound]=useState(0);
   const [over,setOver]=useState(false);
@@ -167,10 +167,12 @@ const Play = () => {
   
   return (
     <>
-      <meta name="viewport" content= "width=device-width, user-scalable=no" />
       {(round===0 || parameter==="") && <>
-  <h2 id="points">Select Points:</h2>
-  <select id="select-points" onChange={(e)=>toss(e)}>
+    <div className="flex flex-col  my-36 gap-y-8 md:flex-row 
+    md:justify-center md:gap-x-28 md:my-28">
+    <div className="flex flex-row gap-x-2 justify-center">
+  <h2 className="text-black font-bold text-lg">Select Points:</h2>
+  <select className="w-30 h-30 rounded-sm bg-black text-white font-bold rounded-sm"onChange={(e)=>toss(e)}>
     <option disabled={over}>Select</option>
       <option value="5">5</option>
       <option value="10">10</option>
@@ -179,61 +181,74 @@ const Play = () => {
       <option value="25">25</option>
       <option value="30">30</option>
     </select>
-      <h2 id="modes">Select Modes:</h2>
-  <select id="select-modes" onChange={(e)=>tosses(e)}>
+  </div>
+      <div className="flex flex-row gap-x-2 justify-center">
+      <h2 className="text-black font-bold text-lg">Select Modes:</h2>
+  <select id="select-modes" className="w-30 h-30 rounded-sm bg-black text-white font-bold rounded-sm" onChange={(e)=>tosses(e)}>
     <option disabled={overs}>Select</option>
       <option value="Attack">Attack</option>
       <option value="Defense">Defense</option>
       <option value="Speed">Speed</option>
     </select>
+    </div>
+    </div>
     </>}
-{load && <><div id="loads"></div></>}
-{loads &&  <><div id="loads"></div></>}
-    {(round!==0 && parameter!=="") && <>
-      {(round!==0 && parameter!==""   && click===false ) && <><button id="play-button" onClick={fun}>Play</button></>}
-      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round && load===false) &&  <div id="player-option">{pokemons.map((i)=>{
-        if(playerchoice!==i.id)
-        return(
-        <>
-        <img src={i.sprites.other.dream_world.front_default} id="iamg" onClick={()=>increase(i.id)} />
-        </>
-        )
-      })}</div>}
-       <p id="choose-text">You choose {parameter} with {round} point(s).</p>
-       <h1 id="p-icon">Player-:{pcount}</h1>
-       <h1 id="c-icon">Computer-:{ccount}</h1>
-    {load==false && <> <div id="player-card">
+
+
+{parameter!='' && round!=''&&
+     <>
+      <div className="w-full flex justify-center"> <p className=" text-lg font-bold ">You choose {parameter} with {round} point(s).</p></div>
+         {load && <><div className="font-bold absolute top-[255px] left-[150px] md:left-[455px] ">Loading...</div></>}
+      {loads &&  <><div className=" font-bold absolute top-[255px] left-[150px] md:left-[455px] ">Loading...</div></>}
+     <div className="my-60 justify-around w-full flex">
+       <h1 className="font-bold">Player-:{pcount}</h1>
+    <h1 className="font-bold">Computer-:{ccount}</h1></div>
+       </>}
+    {load==false && <> <div className="flex-col justify-center absolute top-40 left-[25px] md:left-[180px]">
         {player.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
-           <img src={i.image} id="player-image"></img>
-          <p>{i.name}</p>
-    {parameter==="Attack" && <h3>Attack-:{i.attack}</h3>}
-    {parameter==="Defense" && <h3>Defense-:{i.defense}</h3>}
-      {parameter==="Speed" && <h3>Speed-:{i.speed}</h3>}
+           <img src={i.image} id="player-image" className="w-24 h-24"></img>
+          <p className="font-bold relative top-12 left-0 md:left-6">{i.name}</p>
+    {parameter==="Attack" && <h3 className="font-bold my-12 relative left-0 md:absolute md:left-6">Attack-:{i.attack}</h3>}
+    {parameter==="Defense" && <h3 className="font-bold my-12 relative left-0  md:left-6">Defense-:{i.defense}</h3>}
+      {parameter==="Speed" && <h3 className="font-bold my-12 relative left-0 md:left-6">Speed-:{i.speed}</h3>}
           </>)
           
         })}
 
       </div>
       </>}
-        {load==false && <> <div id="computer-card">
+        {load==false && <> <div className="flex-col justify-center absolute top-40 left-[225px] md:left-[661px]">
         {computer.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
-           <img src={i.image} id="computer-image"></img>
-           <p>{i.name}</p>
-    {parameter==="Attack" && <h3>Attack-:{i.attack}</h3>}
-    {parameter==="Defense" && <h3>Defense-:{i.defense}</h3>}
-      {parameter==="Speed" && <h3>Speed-:{i.speed}</h3>}
+           <img src={i.image} className="w-24 h-24"></img>
+           <p className="font-bold relative top-12 left-0 md:left-6">{i.name}</p>
+    {parameter==="Attack" && <h3 className="font-bold my-12 relative left-0 md:left-6">Attack-:{i.attack}</h3>}
+    {parameter==="Defense" && <h3 className="font-bold my-12 relative left-0 md:left-6">Defense-:{i.defense}</h3>}
+      {parameter==="Speed" && <h3 className="font-bold my-12 relative left-4 md:left-0 md:left-6">Speed-:{i.speed}</h3>}
           </>)
         })}
       </div>
       </>}
-      {ccount==round && round!=0 && <><h2 id="cinfo">Computer Win!!!</h2><button id="reload-btn" onClick={()=>window.location.reload()}>Restart</button></>}
+          {(round!==0 && parameter!=="") && <>
+      {(round!==0 && parameter!==""   && click===false ) && <>
+        <div className="absolute top-[490px] md:top-[420px] md:left-[120px]">
+        <button className="w-24 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full px-36 mx-32 md:mx-80" onClick={fun}>Play</button></div></>}
+      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round && load===false) &&  <div className="w-full flex flex-row flex-wrap absolute top-[420px] mx-0 gap-x-2 gap-y-2 md:px-24 md:gap-x-4 ">{pokemons.map((i)=>{
+        if(playerchoice!==i.id)
+        return(
+        <>
+        <img src={i.sprites.other.dream_world.front_default} className="h-16 w-16" id="iamg" onClick={()=>increase(i.id)} />
+        </>
+        )
+      })}</div>}
+        {ccount==round && round!=0 && <><h2 className="text-lg font-bold absolute top-[420px] left-[110px] md:left-[420px]">Computer Win!!!</h2></>}
       {pcount==round && round!=0 &&
-     <><h2 id="pinfo">Player Win!!!</h2><button id="reload-btn" onClick={()=>window.location.reload()}>Restart</button></>}
+     <><h2 id="pinfo" className="text-lg font-bold absolute top-[420px] left-[130px] md:left-[420px]">Player Win!!!</h2></>}
     </>}
+    
   </>
   );
 };
