@@ -15,12 +15,12 @@ function App() {
         <div className="p-1 mx-2">
         <img src="images/pokeball.png" className="h-20 w-20" onClick={()=>window.location.reload()}></img>
         </div>
-        <div className="w-64 h-32 justify-center">
+        <div className="w-64 h-32 justify-center hidden">
        <img src="images/Text.png"></img>
        </div>
        </div>
        {toggle==false && toggleb==false && togglec==false && toggled==false && <>
-       <img src="images/Intro.jpg" className="w-full"></img>
+       <img src="images/Intro.jpg" className="w-full md:hidden"></img>
 
         <div id="nav-bar" className="w-full bg-yellow-500 h-16 py-4">
         <ul type="none" className="flex justify-around font-bold text-xl">

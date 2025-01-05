@@ -65,7 +65,8 @@ const Details = () => {
   }
   return(<>
      {loading && <><div id="loaders" className="my-48 font-bold text-lg flex justify-center md:my-32">Page is Loading...</div></>}
- {showpage===true && <> <div className="w-full flex flex-row flex-wrap justify-around my-4 gap-x-4 gap-y-4">
+ {showpage===true && <> <div className="w-full flex flex-row flex-wrap justify-around my-4 gap-x-4 gap-y-4 md:flex-row md:gap-x-2 md:flex-wrap md:justify-start
+ ">
      {pokemon.map((item,index) => { return (
     <>
     {item.map((item)=>{
@@ -78,11 +79,11 @@ const Details = () => {
 
     </div>
     </>)})}
-    {index===pokemon.length-1 &&           <img src="images/5.png" style={{display:`${disable?"none":"block"}`}}
-    className="h-8 w-8 md:mx-8 md:h-12 md:w-12"
-    onClick={func}/>}
+    {index===pokemon.length-1 &&     <> <div className="w-full justify-center flex "> <img src="images/5.png" style={{display:`${disable?"none":"block"}`}}
+    className="h-8 w-8 md:mx-8 md:h-12 md:w-12 "
+    onClick={func}/></div></>}
         {index===pokemon.length-1 && subloading &&
-      <div id="loaers" className="my-2 font-bold text-lg flex justify-center md:my-4">Items are Loading...</div>
+      <div id="loaers" className="my-2  flex justify-center w-full font-bold text-lg flex justify-center">Items are Loading...</div>
     }
     </>)})}
     </div> </>}

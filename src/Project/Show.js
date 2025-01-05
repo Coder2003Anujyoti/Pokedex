@@ -23,8 +23,8 @@ const Show = ({searchdata,id,setPage}) => {
   
   return (
     <>
-       <button className=" mx-2 text-black font-bold text-xl md:mx-4" onClick={()=>setPage(true)}>X</button>
-        {id  && <><div className="w-full flex flex-column flex-wrap justify-around  "> {searchdata.map((i,ind)=>{
+       
+        {id  && <><div className="w-full flex flex-column flex-wrap justify-around my-4   "> {searchdata.map((i,ind)=>{
          return(
          <>
         {i.map((i,ind)=>{
@@ -39,8 +39,8 @@ const Show = ({searchdata,id,setPage}) => {
           className="w-64 h-64"
         />
         </div>
-       <div className="  flex flex-col justify-center text-lg font-bold">
-    <div className="w-full flex justify-center"><p className="text-lg font-bold">Name-: {i.name[0].toUpperCase()+i.name.slice(1)}</p></div>
+       <div className="  flex flex-col justify-center text-lg font-bold ">
+    <div className="w-full flex justify-center"><p className="text-lg font-bold  md:text-lg">Name-: {i.name[0].toUpperCase()+i.name.slice(1)}</p></div>
            <div className="w-full flex justify-center text-lg font-bold"> <p className="pokemon-info-type">
         Type-: {i.types.map((curType) => curType.type.name).join(", ")}
       </p></div>
@@ -81,7 +81,7 @@ const Show = ({searchdata,id,setPage}) => {
          )
        })
        }</div> </>}
-
+      <div className="w-full  flex justify-center"><button className=" text-black font-bold text-xl md:text-2xl " onClick={()=>setPage(true)}>X</button></div>
 
     </>
   );

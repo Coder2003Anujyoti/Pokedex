@@ -197,57 +197,64 @@ const Play = () => {
 
 {parameter!='' && round!=''&&
      <>
-      <div className="w-full flex justify-center"> <p className=" text-lg font-bold ">You choose {parameter} with {round} point(s).</p></div>
-         {load && <><div className="font-bold absolute top-[255px] left-[150px] md:left-[455px] ">Loading...</div></>}
-      {loads &&  <><div className=" font-bold absolute top-[255px] left-[150px] md:left-[455px] ">Loading...</div></>}
-     <div className="my-60 justify-around w-full flex">
-       <h1 className="font-bold">Player-:{pcount}</h1>
-    <h1 className="font-bold">Computer-:{ccount}</h1></div>
-       </>}
-    {load==false && <> <div className="flex-col justify-center absolute top-40 left-[25px] md:left-[180px]">
+      <div className="w-full  flex justify-center"> <p className=" text-lg font-bold ">You choose {parameter} with {round} point(s).</p></div>
+         {load && <><div className="font-bold w-full  flex justify-center">Loading...</div></>}
+      {loads &&  <><div className=" font-bold w-full flex justify-center ">Loading...</div></>}
+
+        <div className="w-full h-48 flex justify-center items-center ">
+        <div className='w-full flex justify-around gap-x-32 '>{load==false && <> <div className="flex-col justify-center ">
         {player.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
            <img src={i.image} id="player-image" className="w-24 h-24"></img>
-          <p className="font-bold relative top-12 left-0 md:left-6">{i.name}</p>
-    {parameter==="Attack" && <h3 className="font-bold my-12 relative left-0 md:absolute md:left-6">Attack-:{i.attack}</h3>}
-    {parameter==="Defense" && <h3 className="font-bold my-12 relative left-0  md:left-6">Defense-:{i.defense}</h3>}
-      {parameter==="Speed" && <h3 className="font-bold my-12 relative left-0 md:left-6">Speed-:{i.speed}</h3>}
+         <div className='flex justify-center '><p className="font-bold">{i.name}</p></div>
+         <div className='flex justify-center '>
+    {parameter==="Attack" && <h3 className="font-bold ">Attack-:{i.attack}</h3>}
+    {parameter==="Defense" && <h3 className="font-bold ">Defense-:{i.defense}</h3>}
+      {parameter==="Speed" && <h3 className="font-bold ">Speed-:{i.speed}</h3>}</div>
           </>)
           
         })}
 
       </div>
       </>}
-        {load==false && <> <div className="flex-col justify-center absolute top-40 left-[225px] md:left-[661px]">
+      {load==false && <> <div className="flex-col justify-center">
         {computer.map((i,ind)=>{
         if(ind===player.length-1)
           return(<>
            <img src={i.image} className="w-24 h-24"></img>
-           <p className="font-bold relative top-12 left-0 md:left-6">{i.name}</p>
-    {parameter==="Attack" && <h3 className="font-bold my-12 relative left-0 md:left-6">Attack-:{i.attack}</h3>}
-    {parameter==="Defense" && <h3 className="font-bold my-12 relative left-0 md:left-6">Defense-:{i.defense}</h3>}
-      {parameter==="Speed" && <h3 className="font-bold my-12 relative left-4 md:left-0 md:left-6">Speed-:{i.speed}</h3>}
+           <div className='flex justify-center '><p className="font-bold">{i.name}</p></div>
+           <div className='flex justify-center '>{parameter==="Attack" && <h3 className="font-bold ">Attack-:{i.attack}</h3>}
+    {parameter==="Defense" && <h3 className="font-bold ">Defense-:{i.defense}</h3>}
+      {parameter==="Speed" && <h3 className="font-bold ">Speed-:{i.speed}</h3>}</div>
+    
           </>)
         })}
       </div>
       </>}
-          {(round!==0 && parameter!=="") && <>
-      {(round!==0 && parameter!==""   && click===false ) && <>
-        <div className="absolute top-[490px] md:top-[420px] md:left-[120px]">
-        <button className="w-24 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full px-36 mx-32 md:mx-80" onClick={fun}>Play</button></div></>}
-      {(round!==0 && parameter!=="" && pcount!=round && ccount!=round && load===false) &&  <div className="w-full flex flex-row flex-wrap absolute top-[420px] mx-0 gap-x-2 gap-y-2 md:px-24 md:gap-x-4 ">{pokemons.map((i)=>{
+        </div>
+        
+        
+        
+        
+        </div>
+     <div className="  justify-around gap-x-32 w-full flex">
+       <h1 className="font-bold">Player-:{pcount}</h1>
+    <h1 className="font-bold">Computer-:{ccount}</h1></div>
+     <div className="w-full flex flex-row flex-wrap my-2 justify-center  ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(
         <>
         <img src={i.sprites.other.dream_world.front_default} className="h-16 w-16" id="iamg" onClick={()=>increase(i.id)} />
         </>
         )
-      })}</div>}
-        {ccount==round && round!=0 && <><h2 className="text-lg font-bold absolute top-[420px] left-[110px] md:left-[420px]">Computer Win!!!</h2></>}
+      })}
+      {ccount==round && round!=0 && <><div className='flex justify-center'><h2 className="text-lg font-bold ">Computer Win!!!</h2></div></>}
       {pcount==round && round!=0 &&
-     <><h2 id="pinfo" className="text-lg font-bold absolute top-[420px] left-[130px] md:left-[420px]">Player Win!!!</h2></>}
-    </>}
+     <><div className='flex justify-center'><h2 id="pinfo" className="text-lg font-bold">Player Win!!!</h2></div></>}
+     {click==false && <><div className='flex items-center'><button className="w-24 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded-full" onClick={fun}>Play</button></div></>}
+      </div>
+       </>}
     
   </>
   );
