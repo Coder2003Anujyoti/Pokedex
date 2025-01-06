@@ -30,7 +30,7 @@ const Show = ({searchdata,id,setPage}) => {
         {i.map((i,ind)=>{
         if(i.id===id)
         return(<>
-         <div className="flex flex-col justify-center md:gap-x-8  md:justify-evenly md:flex-row">
+         <div className="flex flex-col justify-center md:gap-x-8  md:justify-evenly lg:flex-row">
                   <div className="rounded-lg" style={{
   backgroundColor:`${typeColor[i.types[0].type.name]}`
 }}>

@@ -168,7 +168,7 @@ const Play = () => {
   return (
     <>
       {(round===0 || parameter==="") && <>
-    <div className="flex flex-col  my-36 gap-y-8 md:flex-row 
+    <div className="flex flex-col  my-36 gap-y-8 lg:flex-row 
     md:justify-center md:gap-x-28 md:my-28">
     <div className="flex flex-row gap-x-2 justify-center">
   <h2 className="text-black font-bold text-lg md:text-xl ">Select Points:</h2>
@@ -238,10 +238,10 @@ const Play = () => {
         
         
         </div>
-     <div className="  justify-around gap-x-32 w-full flex md:gap-x-44 md:justify-center md:my-8 md:text-xl">
+     <div className="  justify-around gap-x-32 w-full flex md:gap-x-44 md:justify-center md:my-8 md:text-xl ">
        <h1 className="font-bold">Player-:{pcount}</h1>
     <h1 className="font-bold">Computer-:{ccount}</h1></div>
-     <div className="w-full flex flex-row flex-wrap my-2 justify-center gap-x-4 gap-y-4 my-4 md:my-12 ">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
+     <div className="w-full flex flex-row flex-wrap my-2 justify-center gap-x-4 gap-y-4 my-4 md:my-12">{ (pcount!=round && ccount!=round && load===false) && pokemons.map((i)=>{
         if(playerchoice!==i.id)
         return(
         <>
