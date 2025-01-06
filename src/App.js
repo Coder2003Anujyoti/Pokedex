@@ -20,7 +20,7 @@ function App() {
        </div>
        </div>
        {toggle==false && toggleb==false && togglec==false && toggled==false && <>
-       <img src="images/Intro.jpg" className="w-full lg:hidden"></img>
+       <img src="images/Intro.jpg" className="w-full md:hidden"></img>
 
         <div id="nav-bar" className="w-full bg-yellow-500 h-16 py-4">
         <ul type="none" className="flex justify-around font-bold text-lg md:text-xl ">
