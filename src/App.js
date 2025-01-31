@@ -1,41 +1,45 @@
-
-import Play from './Project/Play';
-import Details from './Project/Details';
-import Home from './Project/Home';
-import React,{useState} from 'react'
-
-function App() {
-  const [toggle,setToggle]=useState(false);
-  const [toggleb,setToggleb]=useState(false);
-  const [togglec,setTogglec]=useState(false);
-  const [toggled,setToggled]=useState(false);
-  return (
-    <> 
-      <div className="w-full h-24 bg-red-500 flex items-center gap-x-4 md:gap-x-72">
-        <div className="p-1 mx-2">
-        <img src="images/pokeball.png" className="h-20 w-20" onClick={()=>window.location.reload()}></img>
+import {HashRouter as Routers,
+  Routes,Route,Link} from 'react-router-dom';
+  import Play from './Project/Play';
+  import Details from './Project/Details';
+  import Home from './Project/Home';
+  import React,{useState} from 'react'
+  function App() {
+    const [toggle,setToggle]=useState(false);
+    const my={
+      display:`${toggle?"flex":"none"}`
+    }
+    return (
+      <> 
+       <Routers>
+        <div className="w-full h-24 bg-red-500 flex items-center gap-x-4 md:gap-x-72">
+          <div className="p-1 mx-2 lg:hidden">
+          <img src="images/pokeball.png" className="h-20 w-20" onClick={()=>setToggle(!toggle)}></img>
+          </div>
+           <div className="hidden lg:w-full  lg:flex lg:flex-row">
+           <ul type="none" className="hidden lg:text-xl lg:w-full  lg:flex lg:flex-row lg:justify-evenly lg:text-white lg:font-extrabold">
+          <li id="home"><Link id="link" 
+           to="/">Home</Link></li>
+        <li><Link id="link" to="/stats">Stats</Link></li>
+         <li><Link id="link" to="/play">Play</Link></li>
+          </ul>
         </div>
-        <div className="w-64 h-32 justify-center hidden">
-       <img src="images/Text.png"></img>
-       </div>
-       </div>
-       {toggle==false && toggleb==false && togglec==false && toggled==false && <>
-       <img src="images/Intro.jpg" className="w-full md:hidden"></img>
-
-        <div id="nav-bar" className="w-full bg-yellow-500 h-16 py-4">
-        <ul type="none" className="flex justify-around font-bold text-lg md:text-xl ">
-        <li id="home"><a id="link" 
-         onClick={()=>setToggle(true)}>Home</a></li>
-      <li><a id="link" onClick={()=>setToggleb(true)}>Stats</a></li>
-         <li><a id="link" onClick={()=>setToggled(true)}>Play</a></li>
-        </ul>
         </div>
-    <p className="text-sm font-medium p-2 md:px-4 md:text-xl ">Pokedex is an app created by Anujyoti De that offers a comprehensive database of Pokémon. It allows users to easily search, explore, and learn about different Pokémon species, their abilities, evolutions, and other important details. The app features an intuitive design, making it simple for Pokémon enthusiasts to access information, track progress, and enhance their knowledge. Whether you're a casual player or a dedicated fan, Pokedex serves as an essential tool for exploring the Pokémon universe, offering real-time updates and detailed stats to keep users engaged. It’s a perfect companion for any Pokémon fan.</p>
-    </>}
-    {toggle==true && <Home />}
-    {toggleb== true && <Details />}
-    {toggled==true && <Play />}
-    </>
-  )
-}
-export default App
+           <div className="p-4 flex justify-center gap-y-8 font-extrabold text-white bg-red-500 " style={my}>
+          <ul type="none" className="p-2 flex justify-center gap-y-8 font-extrabold text-white flex-col text-lg">
+       <li id="home"><Link id="link" 
+           to="/" onClick={()=>setToggle(false)}>Home</Link></li>
+        <li><Link id="link" to="/stats" onClick={()=>setToggle(false)}>Stats</Link></li>
+         <li><Link id="link" to="/play" onClick={()=>setToggle(false)}>Play</Link></li>
+          </ul>
+          </div>
+      <Routes>
+  <Route path="/" element={<Home/>} />
+    <Route path="/stats" element={<Details/>} />
+  <Route path="/play" element={<Play/>} />
+    </Routes>
+    </Routers>
+      </>
+    )
+  }
+  export default App

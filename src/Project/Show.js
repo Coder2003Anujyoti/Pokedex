@@ -81,7 +81,7 @@ const Show = ({searchdata,id,setPage}) => {
          )
        })
        }</div> </>}
-      <div className="w-full  flex justify-center"><button className=" text-black font-bold text-xl md:text-2xl " onClick={()=>setPage(true)}>X</button></div>
+      <div className="w-full  flex justify-center"><button className=" px-4 py-2 rounded-full bg-slate-800 text-white font-bold text-xl md:text-2xl " onClick={()=>setPage(true)}>X</button></div>
 
     </>
   );
